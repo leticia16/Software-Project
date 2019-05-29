@@ -1,0 +1,53 @@
+ Employee Array (positions)
+   [0] - Name *
+   [1] - ID*
+   [2] - Street Address *
+   [3] - Number Address *
+   [4] - Type ( 1[hourly], 2[Salaried]) *
+   [5] - Commissioned (1 or 0) *
+   [6] - Commission Rate (value or 0) (double)
+   [7] - Commissioned - Sales Results - DATE
+   [8] - Commissioned - Sales Results - VALUE
+   [9] - Hourly - Total Time
+   [10] - Salary (fixed or hourly) *
+   [11] - Syndicated (1 or 0) *
+   [12]- Syndicated Rate (double)
+   [13]- Syndicated Rate maintenance (double)
+   [14]- ID of Employee in syndicated
+   [15]- Payment type (1[Bank Deposit], 2[check in hands], 3[mail check]) *
+   [16]- Number of Employees in System
+
+
+   Hourly
+   - Total Time
+   - Payment: All friday
+
+   Salaried
+   - Payment: Last Work day of month
+
+   Salaried commissioned
+   - Sales Results (Day and value)
+   - Rate
+   - Payment: 2 fridays (  (fixed salary /2 ) + (commission * rate)
+
+   Syndicated
+   - monthly Rate
+   - Additional Rate
+   - Id
+
+   Calendar
+   Dictionary_ALL_Months [ All months and number of days]
+   Dictionary_ALL_Days_of_WEEK [
+   - Day of week that current month stated (e.g.: monday)
+    # How to calculate the day of week with dates :
+        month: may, 2019 (31 days)
+        Started : wednesday (4)
+        Current day: 22 of may, 2019
+
+        --- Calculate what day of week is 22 of may in 2019 ---
+        22 mod 7 == 1 = module
+        if (moduleResult > 4)
+            day = moduleResult - (startedDay);
+        else
+            day = moduleResult + (startedDay - 1);
+
