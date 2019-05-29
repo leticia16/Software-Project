@@ -11,24 +11,20 @@ public class Main {
         String[][][] redo = new String[50][100][12];
 
         int i = 0;
-        String test = "0";
-        String second = "11";
-        int zero = Integer.parseInt(test);
-        System.out.println(zero);
-//        while(true){
-//            menu();
-//            int op = input.nextInt();
-//            switch (op){
-//                case 0:
-//                    break;
-//                case 1:
-//                    createEmployee(menu);
-//                    i++;
-//                    break;
-//            }
-//        }
+        while(true){
+            menu(); // Print the options
+            int op = input.nextInt();
+            switch (op){
+                case 0:
+                    break;
+                case 1:
+                    addEmployee(menu);
+                    i++;
+                    break;
+            }
+        }
     }
-    public static void createEmployee(String[][] employee){
+    public static void addEmployee(String[][] employee){
         System.out.println("Type the attributes of Employee: ");
         System.out.print("Name: ");
         employee[i][0] = input.nextLine(); // Name
@@ -39,11 +35,11 @@ public class Main {
         employee[i][3]= input.nextLine(); // Number Address
         System.out.print("Type: \n (1) hourly; \n (2) salaried; \n ");
         employee[i][4] = input.nextLine(); // Type
-        if(employee[i][4].equals('2')){
+        if(employee[i][4].equals("2")){
             System.out.println("The Employee is Commissioned? [ (1)YES, (2)NO ]");
             employee[i][5]= input.nextLine();
-            if(employee[i][5].equals("1")){
-                employee[i][6] = input.nextLine(); // Commision Rate
+            if(employee[i][5].equals("1")){ // Verify if he's commissioned
+                employee[i][6] = input.nextLine(); // Commission Rate
             }
             else{
                 employee[i][6] = "0";
