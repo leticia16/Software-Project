@@ -4,19 +4,18 @@
    [2] - Street Address *
    [3] - Number Address *
    [4] - Type ( 1[hourly], 2[Salaried]) *
-   [5] - Commissioned (1 or 0) *
+   [5] - Commissioned (1 or 2) *
    [6] - Commission Rate (value or 0) (double)
    [7] - Commissioned - Sales Results - DATE
    [8] - Commissioned - Sales Results - VALUE
    [9] - Hourly - Total Time
-   [10] - Salary (fixed or hourly) *
+   [10] - Salary (Cast to DOUBLE) *
    [11] - Syndicated (1 or 0) *
-   [12]- Syndicated Rate (double)
-   [13]- Syndicated Rate maintenance (double)
+   [12]- Syndicate Fee (Cast to DOUBLE)
+   [13]- Extra Syndicate Fee (Cast to DOUBLE)
    [14]- ID of Employee in syndicated
    [15]- Payment type (1[Bank Deposit], 2[check in hands], 3[mail check]) *
-   [16]- Number of Employees in System
-
+   [16] - PayDay
 
    Hourly
    - Total Time
