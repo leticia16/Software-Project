@@ -1,22 +1,22 @@
  Employee Array (positions)
-   [0] - Name *
-   [1] - ID*
-   [2] - Street Address *
-   [3] - Number Address *
-   [4] - Type ( 1[hourly], 2[Salaried]) *
-   [5] - Commissioned (1 or 2) *
-   [6] - Commission Rate (value or 0) (double)
-   [7] - Commissioned - Sales Results - DATE
-   [8] - Commissioned - Sales Results - VALUE
-   [9] - Hourly - Total Time
+   [0]  - Name *
+   [1]  - ID*
+   [2]  - Street Address *
+   [3]  - Number Address *
+   [4]  - Type ( 1[hourly], 2[Salaried]) *
+   [5]  - Commissioned (1 or 2) *
+   [6]  - Commission Rate (value or 0) (double)
+   [7]  - Commissioned - Sales Results - DATE
+   [8]  - Commissioned - Sales Results - VALUE
+   [9]  - Hourly - Total Time
    [10] - Salary (Cast to DOUBLE) *
    [11] - Syndicated (1 or 0) *
-   [12]- Syndicate Fee (Cast to DOUBLE)
-   [13]- Extra Syndicate Fee (Cast to DOUBLE)
-   [14]- ID of Employee in syndicated
-   [15]- Payment type (1[Bank Deposit], 2[check in hands], 3[mail check]) *
+   [12] - Syndicate Fee (Cast to DOUBLE)
+   [13] - Extra Syndicate Fee (Cast to DOUBLE)
+   [14] - ID of Employee in syndicated
+   [15] - Payment type (1[Bank Deposit], 2[check in hands], 3[mail check]) *
    [16] - PayDay
-
+   [17] - Schedule
    Hourly
    - Total Time
    - Payment: All friday
@@ -50,3 +50,19 @@
         else
             day = moduleResult + (startedDay - 1);
 
+
+
+case 8: // Undo / redo
+                    System.out.println("Choose (1)Undo | (2)Redo : ");
+                    int aux = Integer.parseInt(input.nextLine());
+//                    System.out.println("undo");
+//                    print3DArray(undo);
+//                    System.out.println("redo");
+//                    print3DArray(redo);
+                    menu = undoRedo(menu,undo, redo, aux);
+//                    System.out.println("undo");
+//                    print3DArray(undo);
+//                    System.out.println("redo");
+//                    print3DArray(redo);
+//                    print2DArray(menu);
+                    break;
