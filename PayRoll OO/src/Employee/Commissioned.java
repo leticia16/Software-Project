@@ -4,7 +4,7 @@ import utils.Agenda;
 import utils.Day;
 import utils.Exceptions;
 
-public class Commissioned extends Employee {
+public class Commissioned extends Employee implements CommissionedInterface {
 
     public double comissionRate;
     public double valueSale;
@@ -61,7 +61,7 @@ public class Commissioned extends Employee {
         this.dateSale = dateSale;
     }
 
-    public static void salesResult(Day systemDate, Commissioned e){
+    public  void salesResult(Day systemDate, Commissioned e){
         System.out.println("|||| SALES RESULT");
         System.out.println("--> Result:");
         double result = Exceptions.inputDouble();
@@ -70,7 +70,7 @@ public class Commissioned extends Employee {
         e.setValueSale(result+e.getValueSale());
         e.setDateSale(date);
     }
-    public static void payCommissioned(Employee e){
+    public void payCommissioned(Employee e){
         double salary = e.getGrossSalary();
         if(e.getSyndicate() == 1){
             double rate = e.getUnionFee();
@@ -89,7 +89,7 @@ public class Commissioned extends Employee {
         a.setDateSale(0);
     }
 
-    public Commissioned(Employee original){
+    public Commissioned(Commissioned original){
         this.name = original.getName();
         this.id = original.getId();
         this.adress = original.getAdress();
@@ -101,11 +101,17 @@ public class Commissioned extends Employee {
         this.finalSalary = original.getFinalSalary();
         this.syndicateID = original.getSyndicateID();
         this.alreadyPaid = original.getAlreadyPaid();
-        Commissioned oo = (Commissioned) original;
-        this.comissionRate = oo.getComissionRate();
-        this.valueSale = oo.getValueSale();
-        this.dateSale = oo.getDateSale();
+//        Commissioned oo = (Commissioned) original;
+        this.comissionRate = original.getComissionRate();
+        this.valueSale = original.getValueSale();
+        this.dateSale = original.getDateSale();
         this.agenda = new Agenda();
+//        Agenda a = new Agenda();
+//        a.setWeekly(2,6); // Each 2 fridays
+//        this.agenda = a;
+    }
+    public Commissioned(){
+//        this.agenda = new Agenda();
     }
     public double getComissionRate() {
         return comissionRate;

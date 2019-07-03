@@ -4,7 +4,7 @@ import utils.Agenda;
 import utils.Day;
 import utils.Exceptions;
 
-public class Salaried extends Employee {
+public class Salaried extends Employee implements SalariedInterface {
 
     public Salaried(Day systemDate, int size){
         System.out.println("--> Type the Employee's data:");
@@ -37,8 +37,13 @@ public class Salaried extends Employee {
         a.setMonthly(0); // Last Work Day of Month
         setAgenda(a);
     }
-
-    public Salaried(Employee original){
+    public Salaried(boolean aux){
+        Agenda a = new Agenda();
+        a.setMonthly(0); // Last Work Day of Month
+        this.agenda = a;
+//        this.agenda = new Agenda();
+    }
+    public Salaried(Salaried original){
         this.name = original.getName();
         this.id = original.getId();
         this.adress = original.getAdress();
@@ -52,7 +57,7 @@ public class Salaried extends Employee {
         this.alreadyPaid = original.getAlreadyPaid();
         this.agenda = new Agenda();
     }
-    public static void paySalaried(Employee e){
+    public  void paySalaried(Employee e){
         double salary = e.getGrossSalary();
         if(e.getSyndicate() == 1){
             double rate = e.getUnionFee();
@@ -63,5 +68,8 @@ public class Salaried extends Employee {
             System.out.println("--> ID: "+e.getId());
             System.out.println("--> Payment: $"+salary);
             System.out.println("_________________________");
+    }
+    public Salaried(){
+
     }
 }

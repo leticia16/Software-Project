@@ -5,7 +5,7 @@ import utils.Exceptions;
 import java.util.Scanner;
 import java.util.Calendar;
 
-public class Hourly extends Employee{
+public class Hourly extends Employee implements HourlyInterface{
     // PAYMENT : ALL FRIDAY
     static Scanner input = new Scanner(System.in);
     protected int cardPoint;
@@ -18,7 +18,10 @@ public class Hourly extends Employee{
         this.cardPoint = cardPoint;
     }
 
-    public Hourly(Employee original){
+    public Hourly(){
+//        this.agenda = new Agenda();
+    }
+    public Hourly(Hourly original){
         this.name = original.getName();
         this.id = original.getId();
         this.adress = original.getAdress();
@@ -30,9 +33,11 @@ public class Hourly extends Employee{
         this.finalSalary = original.getFinalSalary();
         this.syndicateID = original.getSyndicateID();
         this.alreadyPaid = original.getAlreadyPaid();
-        Hourly oo = (Hourly) original;
-        this.cardPoint = oo.getCardPoint();
         this.agenda = new Agenda();
+        this.cardPoint = original.cardPoint;
+//        Agenda a = new Agenda();
+//        a.setWeekly(1,6); // All Friday
+//        this.agenda = a;
     }
 
     public Hourly(Day systemDate, int size){
@@ -68,7 +73,7 @@ public class Hourly extends Employee{
         a.setWeekly(1,6); // All Friday
         setAgenda(a);
     }
-    public static void payHourly(Employee e){
+    public  void payHourly(Employee e){
         double salary = e.getGrossSalary();
         if(e.getSyndicate() == 1){ // Syndicate
             double rate = e.getUnionFee();
@@ -91,7 +96,7 @@ public class Hourly extends Employee{
 
     }
 
-    public static int makeCardPoint(){
+    public int makeCardPoint(){
 //        System.out.println("|||| CARDPOINT ");
         System.out.println("--> Entry Time:");
         System.out.println("    | Hour ( 0 ~ 23 ):  ");

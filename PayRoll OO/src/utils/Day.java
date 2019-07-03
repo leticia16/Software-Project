@@ -3,13 +3,13 @@ package utils;
 import Employee.Employee;
 
 public class Day {
-    public static int weekDay;
-    public static int day;
-    public static int month;
-    public static int year;
-    public static  int[] monthsDays = {0,31,28,31,30,31,30,31,31,30,31,30,31};
-    public static String[] weekdaysDictionary = {"0","Sunday","Monday","Tuesday","Wednesday", "Thursday", "Friday", "Saturday"};
-    public static String[] monthsDictionary = {"0","January","February","March","April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    private   int weekDay;
+    private   int day;
+    private   int month;
+    private   int year;
+    public    int[] monthsDays = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+    public    String[] weekdaysDictionary = {"0","Sunday","Monday","Tuesday","Wednesday", "Thursday", "Friday", "Saturday"};
+    public    String[] monthsDictionary = {"0","January","February","March","April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     public Day(int weekDay, int day, int month, int year) {
         this.weekDay = weekDay;
@@ -73,7 +73,7 @@ public class Day {
         this.year = year;
     }
 
-    public static Day SystemDate(){
+    public  Day SystemDate(){
         int i;
         System.out.println("Welcome to PayRoll System, please, type the current date:");
         System.out.println("--> WEEK DAY (Choose one Option): ");
@@ -81,15 +81,19 @@ public class Day {
             System.out.println("   ("+i+") "+ weekdaysDictionary[i]);
         }
         int weekDay = Exceptions.inputIntegerBounds(1,7);
+//        aux.setWeekDay(weekDay);
         System.out.println("--> DAY (1 - 31):");
         int day = Exceptions.inputIntegerBounds(1,31);
+//        aux.setDay(day);
         System.out.println("--> MONTH: (choose one option):");
         for(i = 1; i < 13; i++){
             System.out.println("   ("+i+") "+ monthsDictionary[i]);
         }
         int month = Exceptions.inputIntegerBounds(1,12);
+//        aux.setMonth(month);
         System.out.println("--> YEAR (format yyyy ~ equal or greater than 2019):");
         int year = Exceptions.inputIntegerBounds(2019);
+//        aux.setYear(year);
         return new Day(weekDay,day,month,year);
     }
     public int getLastMonthDay(int month){
