@@ -26,7 +26,8 @@ public class Salaried extends Employee implements SalariedInterface {
             case 1:
                 System.out.println("--> Union Fee (0.0 ~ 1.0):");
                 setUnionFee(Exceptions.inputDoubleBounds(0.0,1.0));
-                setSyndicateID(getId()*6);
+                setSyndicateID((int)(getGrossSalary()*5+100));
+                System.out.println("test syndiID : "+getSyndicateID());
                 break;
 
         }

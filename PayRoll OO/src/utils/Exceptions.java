@@ -5,134 +5,104 @@ import java.util.Scanner;
 public class Exceptions {
     static Scanner input = new Scanner(System.in);
 
-    public static int inputInteger(){
-        while (true){
-            try{
+    public static int inputInteger() {
+        while (true) {
+            try {
                 int in = input.nextInt();
                 input.nextLine();
                 return in;
-            }
-            catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 input.nextLine(); // Trash
                 System.out.println("WARNING: Input is incompatible");
                 System.out.println("       | Please, type an Integer");
             }
         }
     }
-    public static double inputDouble(){
-        while (true){
-            try{
+
+    public static double inputDouble() {
+        while (true) {
+            try {
                 return input.nextDouble();
-            }
-            catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("##### WARNING: Input is incompatible");
                 System.out.println("             | Please, type an Floating Point number");
             }
             input.nextLine(); // Trash
         }
     }
-    public static int inputIntegerBounds(int lowerBound, int upperBound){
+
+    public static int inputIntegerBounds(int lowerBound, int upperBound) {
         boolean flag = true;
-        while(true){
-            try{
-                int digit =  input.nextInt();
-                if(digit >= lowerBound && digit <=upperBound){
+        while (true) {
+            try {
+                int digit = input.nextInt();
+                if (digit >= lowerBound && digit <= upperBound) {
                     input.nextLine();
                     return digit;
-                }
-                else{
+                } else {
                     System.out.println("##### CAUTION: Input is incompatible with variable bound");
-                    System.out.println("             | Please, type an Integer between "+lowerBound+" and "+upperBound);
+                    System.out.println("             | Please, type an Integer between " + lowerBound + " and " + upperBound);
                 }
-            }
-            catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("##### WARNING: Input is incompatible");
                 System.out.println("             | Please, type an Integer");
             }
             input.nextLine(); // trash
         }
     }
-    public static int inputIntegerBounds(int lowerBound){
+
+    public static int inputIntegerBounds(int lowerBound) {
         boolean flag = true;
-        while(true){
-            try{
-                int digit =  input.nextInt();
-                if(digit >= lowerBound){
+        while (true) {
+            try {
+                int digit = input.nextInt();
+                if (digit >= lowerBound) {
                     input.nextLine();
                     return digit;
-                }
-                else{
+                } else {
                     System.out.println("##### CAUTION: Input is incompatible with variable bound");
-                    System.out.println("             | Please, type an Integer equal or greater than "+lowerBound);
+                    System.out.println("             | Please, type an Integer equal or greater than " + lowerBound);
                 }
-            }
-            catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("##### WARNING: Input is incompatible");
                 System.out.println("             | Please, type an Integer");
             }
             input.nextLine(); // trash
         }
     }
-    public static double inputDoubleBounds(double lowerBound, double upperBound){
+
+    public static double inputDoubleBounds(double lowerBound, double upperBound) {
         boolean flag = true;
-        while(true){
-            try{
-                double digit =  input.nextDouble();
-                if(digit >= lowerBound && digit <=upperBound){
+        while (true) {
+            try {
+                double digit = input.nextDouble();
+                if (digit >= lowerBound && digit <= upperBound) {
                     return digit;
-                }
-                else{
+                } else {
                     System.out.println("##### CAUTION: Input is incompatible with variable bound");
-                    System.out.println("             | Please, type a Floating Pointer between "+lowerBound+" and "+upperBound);
+                    System.out.println("             | Please, type a Floating Pointer between " + lowerBound + " and " + upperBound);
                 }
-            }
-            catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("##### WARNING: Input is incompatible");
                 System.out.println("             | Please, type a Floating Number");
             }
             input.nextLine(); // trash
         }
     }
-    public static int castToInteger(String data){
-        try{
+
+    public static int castToInteger(String data) {
+        try {
             return Integer.parseInt(data);
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println("##### ERROR: The String couldn't be parsed to Int.");
             System.out.println("           | Error Code: 101");
 //            System.out.println("Local ERROR: "+ e.getStackTrace()[0].getLineNumber());
             return 0;
         }
     }
-    public static String inputString(){
+
+    public static String inputString() {
         return input.nextLine();
     }
-//        String in;
-//        while(true){
-//            return input.nextLine();
-//
-////            if(in.equals(" ") || in.equals("")){
-////                System.out.println("##### WARNING: Input is empty");
-////                System.out.println("             | Please, type a nonempty input ");
-//            }
-////            else{
-////                break;
-////            }
-//        }
-//        return in;
-    }
-
-//       try {
-//
-//        // if the user doesn't enter anything and press enter or entered value is empty
-//        if (emp.isEmpty() || emp.equals(" ")) {
-//            System.out.println("Invalid input");
-//            return;
-//        }
-//
-//    }catch (InputMismatchException e){
-//        //catch the message
-//        e.printStackTrace();
-//    }
-//}
+}
 

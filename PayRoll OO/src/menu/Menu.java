@@ -303,26 +303,25 @@ public class Menu {
         }
     }
     public  void launchServiceRate(){ // Syndicate
-        boolean flag = true;
+        boolean flag = false;
         System.out.println("|||| SERVICE RATE - SYNDICATE");
         System.out.println("--> Syndicate Employee List");
         printEmployeeList(0);
         System.out.println("--> Syndicate ID: ");
-        while (flag){
-           int id = Exceptions.inputInteger();
-            for (Employee e: employeeList) {
-                int aux = e.getSyndicateID();
-                if(aux == id){
-                        System.out.println("--> ExtraSyndicateRate (0.0 ~ 1.0): ");
-                        e.setExtraSyndicateRate(Exceptions.inputDoubleBounds(0.0,1.0));
-                        System.out.println("successful operation");
-                        flag = false;
-                }
+        int id = Exceptions.inputInteger();
+        for (Employee e: employeeList) {
+            int aux = e.getSyndicateID();
+            if(aux == id){
+                System.out.println("--> ExtraSyndicateRate (0.0 ~ 1.0): ");
+                e.setExtraSyndicateRate(Exceptions.inputDoubleBounds(0.0,1.0));
+                System.out.println("successful operation");
+                flag = true;
+                break;
             }
-            System.out.println("The Employee isn't part of Syndicate!");
-            flag = false;
         }
-
+        if(!flag){
+            System.out.println("The Employee isn't part of Syndicate!");
+        }
     }
     public  void editEmployee() {
         boolean flag = true, flag_aux = false;
@@ -469,13 +468,7 @@ public class Menu {
         for (Employee e: employeeList) {
             switch (e.agenda.getPayType()){
                 case 1:
-//                    System.out.println("case 1");
-//                    System.out.println("WT: "+e.agenda.getWeeklyType());
-//                    System.out.println("WI: "+e.agenda.getWeeklyIterator());
-//                    System.out.println("WD: "+e.agenda.getWeeDay());
-//                    System.out.println("system WD: "+systemDate.getWeekDay());
                     if(((e.agenda.getWeeklyType() - e.agenda.getWeeklyIterator()) == 0 ) && e.agenda.getWeeDay() == systemDate.getWeekDay(true)){
-//                        System.out.println("Case 1 : Pay()");
                         if(!e.getAlreadyPaid()){
                             pay(e);
                             e.agenda.setWeeklyIterator(1);
@@ -487,25 +480,15 @@ public class Menu {
                     }
                     break;
                 case 2:
-//                    System.out.println("case 2");
                     int[] array = e.agenda.getMonthsDays();
-//                    System.out.println("MDay: "+e.agenda.getMonthlyDay());
-//                    System.out.println("total months days: "+array[systemDate.getMonth(true)]);
-//                    System.out.println("Day: "+systemDate.getDay());
-//                    System.out.println("DIfer: "+(array[systemDate.getMonth(true)] - systemDate.getDay()));
                     if(e.agenda.getMonthlyDay() == 0){ // Last work Day
                         int payDay = 0;
-//                        if((array[systemDate.getMonth(true)] - systemDate.getDay()) == 2) {
-//                            payDay = Agenda.LastWorkDay(systemDate);
-//                            e.setPayDay(payDay);
-//                        }
                         if(e.getPayDay() == systemDate.getDay()){
                           if(!e.getAlreadyPaid()){
                               pay(e);
                               e.setAlreadyPaid(true);
                           }
                         }
-//                        System.out.println("PayDay: "+e.getPayDay());
                     }
                     if(e.agenda.getMonthlyDay()>=1 && e.agenda.getMonthlyDay()<=array[systemDate.getMonth(true)]){ // Others agendas
                         if(e.agenda.getMonthlyDay() == systemDate.getDay()){
@@ -635,6 +618,7 @@ public class Menu {
         int monthDay = 0;
         for (int[] aux_:agendasList) {
             if(aux_[3] == choice){
+                choice = aux_[0];
                 if(aux_[0] == 1){
                     weeklyType = aux_[1];
                     weekDay = aux_[2];
@@ -657,10 +641,12 @@ public class Menu {
                 if(choice == 1){ // Weekly
                     e.agenda.setWeekly(weeklyType,weekDay);
                     e.agenda.setPayType(1);
+//                    break;
                 }
-                else if(choice == 2){
+                if(choice == 2){
                     e.agenda.setMonthly(monthDay);
                     e.agenda.setPayType(2);
+//                    break;
                 }
                 flag = true;
                 break;
@@ -713,14 +699,12 @@ public class Menu {
         System.out.println("(7)  Run PayRoll");
         System.out.println("(8)  Undo");
         System.out.println("(9)  Redo");
-        System.out.println("(10) New Payment Schedule");
-        System.out.println("(11) Show Employee's List");
-        System.out.println("(12) End of the working day");
-        System.out.println("(13) Choose A Different Agenda");
-        System.out.println("(14) New Agenda");
+        System.out.println("(10) Show Employee's List");
+        System.out.println("(11) End of the working day");
+        System.out.println("(12) Choose A Different Agenda");
+        System.out.println("(13) New Agenda");
         System.out.println("(0)  Exit ");
         System.out.println("---> Choose a Feature:");
-//        System.out.println("(9)  Payment Schedule"); Feature Included in "(6) Edit an Employee"  ### PUT IN  program DOCUMENTATION
         return start;
     }
 }

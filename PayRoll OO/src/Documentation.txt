@@ -1,0 +1,15 @@
+|||| PAYROLL SYSTEM ||||
+Employee's types:
+
+(1) Hourly
+    input the hour salary
+    Default : paid weekly every friday
+
+(2) Commissioned
+    input the double weekly salary
+    Default : paid each 2 weeks every friday
+
+(3) Salaried
+    input the monthly salary
+    Default : paid monthly, last work day of each month
+              --> work day is represented by day 0
